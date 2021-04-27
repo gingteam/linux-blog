@@ -1,0 +1,8 @@
+parameters:
+
+
+database:
+  # dsn: 'mysql:host=127.0.0.1;dbname=test'
+  dsn: "sqlite:%appDir%/database.sqlite"
+  user:
+  password:
