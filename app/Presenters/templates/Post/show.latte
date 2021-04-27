@@ -1,0 +1,53 @@
+{block navbar-item}
+  <li class="nav-item">
+    <a class="nav-link" n:href="edit $post->id"><i class="fas fa-pencil-alt"></i> Edit</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" n:href="delete $post->id"><i class="fas fa-trash-alt"></i> Delete</a>
+  </li>
+{/block}
+
+{block content}
+
+<div class="row">
+  <div class="col-md-2 col-xs-12">
+    <div class="share">
+      <!-- Plugin share -->
+      <p>Share</p>
+      <ul>
+        <li>
+          <a href="https://www.facebook.com/sharer/sharer.php?u={link this|escapeUrl}" target="_blank"><i class="fab fa-facebook-square fa-2x"></i></a>
+        </li>
+    </div>
+  </div>
+  <div class="col-md-8 col-md-offset-2 col-xs-12">
+      <div class="mainheading">
+        <h1 class="posttitle" n:block=title>{$post->title}</h1>
+        <div class="wrapfooter">
+          <span class="author-meta">
+            <span class="post-date"><i class="far fa-calendar-alt"></i> {$post->created_at|date:'F j, Y'}</span>
+          </span>
+        </div>
+      </div>
+
+      <div class="article-post">
+        <p>{$post->content|markdown}</p>
+      </div>
+      {if $post->tags}
+        <div class="after-post-tags">
+          <ul class="tags">
+            <li n:foreach="($post->tags|split:',') as $tag">
+              <a n:href="Homepage:list 1, $tag, 1">{$tag}</a>
+            </li>
+          </ul>
+        </div>
+      {/if}
+  </div>
+</div>
+{/block}
+
+{block scripts}
+  {include parent}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js" integrity="sha512-s+tOYYcC3Jybgr9mVsdAxsRYlGNq4mlAurOrfNuGMQ/SCofNPu92tjE7YRZCsdEtWL1yGkqk15fU/ark206YTg==" crossorigin="anonymous"></script>
+  <script>hljs.highlightAll();</script>
+{/block}

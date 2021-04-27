@@ -1,0 +1,4 @@
+# config/local.neon
+composer.lock
+vendor/
+app/database.sqlite

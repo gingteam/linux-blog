@@ -1,0 +1,14 @@
+<nav n:if="!$presenter->isLinkCurrent('Homepage:')" aria-label="breadcrumb">
+  <ol class="breadcrumb mt-5">
+    <li class="breadcrumb-item"><a href="{plink Homepage:}"><i class="fas fa-home"></i> Home</a></li>
+    {if $breadcrumbs}
+      <li n:foreach="$breadcrumbs as $breadcrumb" n:class="breadcrumb-item, !$breadcrumb->link ? active">
+        {if $breadcrumb->link}
+          <a href="{$breadcrumb->link}">{$breadcrumb->title}</a>
+        {else}
+          {$breadcrumb->title}
+        {/if}
+      </li>
+    {/if}
+  </ol>
+</nav>
