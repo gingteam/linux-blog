@@ -10,11 +10,11 @@ class BreadCrumbControl extends Control
 {
     private $breadcrumbs = [];
 
-    public function add(string $title, string $link = '')
+    public function add(string $title, string $link = '#')
     {
         $breadcrumb = new \stdClass();
         $breadcrumb->title = $title;
-        $breadcrumb->link = $link ?? null;
+        $breadcrumb->link = $link;
 
         $this->breadcrumbs[] = $breadcrumb;
 

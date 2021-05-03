@@ -19,7 +19,6 @@ class PostPresenter extends BasePresenter
 
         $this['breadCrumb']->add('Create a new post');
         $this->setView('form');
-        $this->template->title = 'Create a new post';
     }
 
     public function actionEdit(int $id)
@@ -39,7 +38,6 @@ class PostPresenter extends BasePresenter
         )->add('Edit post');
 
         $this->setView('form');
-        $this->template->title = 'Edit post';
         $this['postForm']->setDefaults($post->toArray());
     }
 
