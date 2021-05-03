@@ -12,7 +12,7 @@ class HomepagePresenter extends BasePresenter
     {
         $posts = $this->database->table('posts');
         if ($search) {
-            $posts->where(($tag ? 'tags' : 'title').' LIKE ?', '%'.$search.'%');
+            $posts->where(($tag ? 'tags' : 'title OR content').' LIKE ?', '%'.$search.'%');
         }
 
         $this->setView('list');
