@@ -15,7 +15,7 @@ final class RouterFactory
     {
         $router = new RouteList();
         $router->addRoute('list', 'Homepage:list');
-        $router->addRoute('post/<id \d+>[-<slug [a-zA-Z0-9\\-\\.]+>].html', 'Post:show');
+        $router->addRoute('post/<id \d+>/<slug [a-zA-Z0-9\\-\\.]+>.html', 'Post:show');
         $router->addRoute('<presenter>/<action>[/<id>]', 'Homepage:default');
 
         return $router;

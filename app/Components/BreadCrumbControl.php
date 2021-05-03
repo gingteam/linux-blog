@@ -8,22 +8,23 @@ use Nette\Application\UI\Control;
 
 class BreadCrumbControl extends Control
 {
-    private $breadcrumbs = [];
+    private $links = [];
 
-    public function add(string $title, string $link = '')
+    public function add(string $title, string $url = '#')
     {
-        $breadcrumb = new \stdClass();
-        $breadcrumb->title = $title;
-        $breadcrumb->link = $link ?? null;
+        $link = new \stdClass();
+        $link->title = $title;
+        $link->url = $url;
 
-        $this->breadcrumbs[] = $breadcrumb;
+        $this->links[] = $link;
 
         return $this;
     }
 
-    public function render()
+    public function render(string $title)
     {
-        $this->template->breadcrumbs = $this->breadcrumbs;
+        $this->template->links = $this->links;
+        $this->template->title = $title;
         $this->template->render(__DIR__.'/breadcrumb.latte');
     }
 }

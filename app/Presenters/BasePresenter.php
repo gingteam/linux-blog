@@ -10,12 +10,24 @@ use Nette\Database\Explorer;
 
 class BasePresenter extends Nette\Application\UI\Presenter
 {
+    protected $title = 'Linux Blog';
+
     protected $database;
 
     public function __construct(Explorer $database)
     {
         $this->absoluteUrls = true;
         $this->database = $database;
+    }
+
+    protected function setTitle(string $title)
+    {
+        $this->title = $title;
+    }
+
+    protected function afterRender()
+    {
+        $this->template->title = $this->title;
     }
 
     protected function createComponentBreadCrumb()
