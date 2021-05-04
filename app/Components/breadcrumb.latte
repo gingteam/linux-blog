@@ -1,14 +1,11 @@
 <nav n:if="!$presenter->isLinkCurrent('Homepage:')" aria-label="breadcrumb">
   <ol class="breadcrumb mt-5">
     <li class="breadcrumb-item"><a href="{plink Homepage:}"><i class="fas fa-home"></i> Home</a></li>
-    {foreach $breadcrumbs as $breadcrumb}
-      {if !$iterator->last}
-        <li class="breadcrumb-item active">
-          <a href="{$breadcrumb->link}">{$breadcrumb->title}</a>
+    {foreach $links as $link}
+        <li class="breadcrumb-item">
+          <a href="{$link->url}">{$link->title}</a>
         </li>
-      {else}
-        <li class="breadcrumb-item active">{$breadcrumb->title}</li>
-      {/if}
     {/foreach}
+    <li class="breadcrumb-item active">{$title}</li>
   </ol>
 </nav>

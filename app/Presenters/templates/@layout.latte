@@ -9,7 +9,7 @@
     <meta property="og:description" n:ifset="$post->content" content="{$post->content|markdown|stripHtml|truncate:120,'...'}">
     <link rel="icon" href="{$baseUrl}/favicon.ico">
 
-    <title>{ifset title}{include title|stripHtml} | {/ifset}Ubunlog</title>
+    <title>{ifset $title}{$title} | {/ifset}Ubunlog</title>
 
     <link rel="canonical" n:href="this">
 
@@ -70,7 +70,7 @@
     </nav>
     <main role="main" class="container">
       <div n:foreach="$flashes as $flash" class="alert alert-{$flash->type}">{$flash->message}</div>
-      {control breadCrumb}
+      {control breadCrumb $title}
 
       {include content}
 

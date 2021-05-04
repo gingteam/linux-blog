@@ -17,7 +17,7 @@ class PostPresenter extends BasePresenter
             $this->redirect('Sign:in');
         }
 
-        $this['breadCrumb']->add('Create a new post');
+        $this->setTitle('Create a new post');
         $this->setView('form');
     }
 
@@ -32,13 +32,15 @@ class PostPresenter extends BasePresenter
             $this->error('Post not found');
         }
 
+        $this->setTitle('Post edit');
+
         $this['breadCrumb']->add(
             $post->title,
             $this->link('show', $post->id, Strings::webalize($post->title))
-        )->add('Edit post');
+        );
 
-        $this->setView('form');
         $this['postForm']->setDefaults($post->toArray());
+        $this->setView('form');
     }
 
     public function actionDelete(int $id)
@@ -53,17 +55,19 @@ class PostPresenter extends BasePresenter
         $this->redirect('Homepage:');
     }
 
-    public function renderShow(int $id, string $slug = '')
+    public function renderShow(int $id, string $slug)
     {
         $post = $this->database->table('posts')->get($id);
         if (!$post) {
             $this->error('Post not found');
         }
 
+        $this->setTitle($post->title);
+
         $this['breadCrumb']->add(
             'Blog',
             $this->link('Homepage:list')
-        )->add($post->title);
+        );
 
         $this->template->post = $post;
     }
