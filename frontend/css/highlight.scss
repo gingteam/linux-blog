@@ -1,5 +1,11 @@
-code[class^=language] {
-  border-radius: 5px 5px 0 0;
+.hljs {
+  display: block;
+  background: #2b2b2b;
+  color: #f8f8f2;
+  padding-top: 1rem;
+  padding-left: 1.5rem;
+  padding-bottom: 1rem;
+  border-radius: 5px 5px 5px 5px;
   position: relative;
   overflow-x: auto;
 
@@ -42,15 +48,6 @@ code[class^=language] {
 
 .hljs-keyword, .hljs-selector-tag {
   color: #dcc6e0;
-}
-
-.hljs {
-  display: block;
-  background: #2b2b2b;
-  color: #f8f8f2;
-  padding-top: 1rem;
-  padding-left: 1.5rem;
-  padding-bottom: 1rem;
 }
 
 .hljs-emphasis {
