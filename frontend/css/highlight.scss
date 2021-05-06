@@ -17,9 +17,44 @@
     border-radius: 50%;
     background: #fc2230;
     box-shadow: 0 0 0 2px #fc2230, 1.5em 0 0 2px #fd9332, 3em 0 0 2px #7cc74c;
-    height: 10px;
-    width: 10px;
+    height: 7px;
+    width: 7px;
   }
+}
+
+.btn-copy {
+  background: #42a7ff;
+  border: 0;
+  background-image: url(data:image/svg+xml;utf8;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTQgMTYiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbD0iI2ZmZmZmZiIgZD0iTTIgMTNoNHYxSDJ2LTF6bTUtNkgydjFoNVY3em0yIDNWOGwtMyAzIDMgM3YtMmg1di0ySDl6TTQuNSA5SDJ2MWgyLjVWOXpNMiAxMmgyLjV2LTFIMnYxem05IDFoMXYyYy0uMDIuMjgtLjExLjUyLS4zLjctLjE5LjE4LS40Mi4yOC0uNy4zSDFjLS41NSAwLTEtLjQ1LTEtMVY0YzAtLjU1LjQ1LTEgMS0xaDNjMC0xLjExLjg5LTIgMi0yIDEuMTEgMCAyIC44OSAyIDJoM2MuNTUgMCAxIC40NSAxIDF2NWgtMVY2SDF2OWgxMHYtMnpNMiA1aDhjMC0uNTUtLjQ1LTEtMS0xSDhjLS41NSAwLTEtLjQ1LTEtMXMtLjQ1LTEtMS0xLTEgLjQ1LTEgMS0uNDUgMS0xIDFIM2MtLjU1IDAtMSAuNDUtMSAxeiIvPjwvc3ZnPg==);
+  background-repeat: no-repeat;
+  background-size: 16px 16px;
+  background-position: center 3px;
+  border-radius: 50%;
+  box-shadow: none;
+  height: 24px;
+  opacity: 1;
+  width: 24px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  margin-top: 5px;
+  outline: none;
+  padding: 6px 12px;
+  position: absolute;
+  right: 5px;
+  text-align: center;
+  text-decoration: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  white-space: nowrap;
+  z-index: 1;
+}
+
+.btn-copy-ok {
+  background-image: url(data:image/svg+xml;utf8;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxOCAxNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTcuODUgMy4xNTdjLjIuMjIyLjIuNTY1IDAgLjc4Nkw3LjM3MyAxNS41M2EuNTU3LjU1NyAwIDAgMS0uODI2IDBMLjE1IDguNDU1YS41OS41OSAwIDAgMSAwLS43ODZsMi4wNDMtMi4yNmEuNTU2LjU1NiAwIDAgMSAuODI1IDBsMy41MyAzLjkwM2EuNTU2LjU1NiAwIDAgMCAuODI1IDBjMS40MzEtMS41ODQgNi4xNzctNi44MyA3LjYwOS04LjQxNGEuNTU2LjU1NiAwIDAgMSAuODI1IDBsMi4wNDMgMi4yNnoiIGZpbGw9IiNmZmZmIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiLz48L3N2Zz4=);
+  background-size: 14px 14px;
+  background-position: 50%;
 }
 
 .hljs-comment, .hljs-quote {

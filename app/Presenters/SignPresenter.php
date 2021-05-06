@@ -19,6 +19,7 @@ class SignPresenter extends BasePresenter
             ->setRequired('Please enter your password.');
 
         $form->addSubmit('send', 'Sign in');
+        $form->addProtection();
 
         $form->onSuccess[] = [$this, 'signInFormSucceeded'];
 

@@ -11,26 +11,37 @@ use Nette\Utils\Strings;
 
 class PostPresenter extends BasePresenter
 {
-    public function actionCreate()
+    protected function startup()
     {
-        if (!$this->getUser()->isLoggedIn()) {
+        parent::startup();
+
+        if (
+            'show' != $this->getAction()
+            && !$this->getUser()->isLoggedIn()
+        ) {
             $this->redirect('Sign:in');
         }
+    }
 
+    protected function getPost(int $id)
+    {
+        $post = $this->database->table('posts')->get($id);
+        if (!$post) {
+            $this->error('Post not found');
+        }
+
+        return $post;
+    }
+
+    public function actionCreate()
+    {
         $this->title = 'Create a new post';
         $this->setView('form');
     }
 
     public function actionEdit(int $id)
     {
-        if (!$this->getUser()->isLoggedIn()) {
-            $this->redirect('Sign:in');
-        }
-
-        $post = $this->database->table('posts')->get($id);
-        if (!$post) {
-            $this->error('Post not found');
-        }
+        $post = $this->getPost($id);
 
         $this->title = 'Post edit';
 
@@ -45,10 +56,7 @@ class PostPresenter extends BasePresenter
 
     public function actionDelete(int $id)
     {
-        $post = $this->database->table('posts')->get($id);
-        if (!$post) {
-            $this->error('Post not found');
-        }
+        $post = $this->getPost($id);
 
         $post->delete();
         $this->flashMessage('Deleted successfully');
@@ -57,10 +65,7 @@ class PostPresenter extends BasePresenter
 
     public function renderShow(int $id, string $slug)
     {
-        $post = $this->database->table('posts')->get($id);
-        if (!$post) {
-            $this->error('Post not found');
-        }
+        $post = $this->getPost($id);
 
         $this->title = $post->title;
 
@@ -74,10 +79,6 @@ class PostPresenter extends BasePresenter
 
     protected function createComponentPostForm()
     {
-        if (!$this->getUser()->isLoggedIn()) {
-            $this->error('You need to log in to create or edit posts');
-        }
-
         $form = new BootstrapForm();
         $form->renderMode = RenderMode::VERTICAL_MODE;
 
@@ -89,6 +90,7 @@ class PostPresenter extends BasePresenter
         $form->addText('thumbnail', 'Thumbnail:');
         $form->addText('tags', 'Tags:')
             ->setHtmlAttribute('data-role', 'tagsinput');
+        $form->addProtection();
 
         $form->addSubmit('send', 'Save and publish');
         $form->onSuccess[] = [$this, 'postFormSucceeded'];
