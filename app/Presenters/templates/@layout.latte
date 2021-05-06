@@ -21,54 +21,52 @@
 
   <body>
     <nav class="navbar navbar-expand-md navbar-light bg-white mediumnavigation">
+      <!-- Begin Logo -->
+      <a class="navbar-brand" n:href="Homepage:">
+        <img src="https://static.cdnlogo.com/logos/u/81/ubuntu.svg" alt="logo">
+      </a>
+      <!-- End Logo -->
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <!-- Begin Menu -->
+        <ul class="navbar-nav ml-auto">
+          {if $user->loggedIn}
+            {block navbar-item}{/block}
+            <li class="nav-item">
+              <a class="nav-link" n:href="Post:create"><i class="fas fa-plus"></i> Create</a>
+            </li>
+            <li class="nav-item">
+              <span class="nav-link" href="#"><i class="fas fa-user"></i> {$user->id}</span>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" n:href="Sign:out"><i class="fas fa-sign-out-alt"></i> Sign out</a>
+            </li>
+          {else}
+            <li class="nav-item"><a class="nav-link" n:href="Sign:in"><i class="fas fa-sign-in-alt"></i> Sign in</a></li>
+          {/if}
+        </ul>
+        <!-- End Menu -->
+        <div class="form-inline my-2 my-lg-0">
+          <input id="search-input" class="form-control mr-sm-2" type="text" placeholder="Search">
+          <span onClick="searchNow()" class="search-icon"><i class="fas fa-search"></i></span>
+          <script>
+            function searchNow() {
+              var searchURL = {$baseUrl} + '/list?search=';
+              window.open(searchURL + document.getElementById("search-input").value, "_self");
+            }
+            var elem = document.getElementById('search-input');
+            elem.addEventListener('keypress', function(e) {
+              if (e.keyCode == 13) {
+                searchNow();
+              }
+            });
+          </script>
+        </div>
+      </div>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="container">
-        <!-- Begin Logo -->
-        <a class="navbar-brand" n:href="Homepage:">
-          <img src="https://static.cdnlogo.com/logos/u/81/ubuntu.svg" alt="logo">
-        </a>
-        <!-- End Logo -->
-        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-          <!-- Begin Menu -->
-          <ul class="navbar-nav ml-auto">
-            {if $user->loggedIn}
-              {block navbar-item}{/block}
-              <li class="nav-item">
-                <a class="nav-link" n:href="Post:create"><i class="fas fa-plus"></i> Create</a>
-              </li>
-              <li class="nav-item">
-                <span class="nav-link" href="#"><i class="fas fa-user"></i> {$user->id}</span>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" n:href="Sign:out"><i class="fas fa-sign-out-alt"></i> Sign out</a>
-              </li>
-            {else}
-              <li class="nav-item"><a class="nav-link" n:href="Sign:in"><i class="fas fa-sign-in-alt"></i> Sign in</a></li>
-            {/if}
-          </ul>
-          <!-- End Menu -->
-          <div class="form-inline my-2 my-lg-0">
-            <input id="search-input" class="form-control mr-sm-2" type="text" placeholder="Search">
-            <span onClick="searchNow()" class="search-icon"><i class="fas fa-search"></i></span>
-            <script>
-              function searchNow() {
-                var searchURL = {$baseUrl} + '/list?search=';
-                window.open(searchURL + document.getElementById("search-input").value, "_self");
-              }
-              var elem = document.getElementById('search-input');
-              elem.addEventListener('keypress', function(e) {
-                if (e.keyCode == 13) {
-                  searchNow();
-                }
-              });
-            </script>
-          </div>
-        </div>
-      </div>
     </nav>
-    <main role="main" class="container">
+    <main role="main" class="container mt-2">
       <div n:foreach="$flashes as $flash" class="alert alert-{$flash->type}">{$flash->message}</div>
       {control breadCrumb $title}
 

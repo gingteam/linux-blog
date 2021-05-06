@@ -1,4 +1,5 @@
 # config/local.neon
+.idea
 composer.lock
 package-lock.json
 vendor
