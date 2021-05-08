@@ -13,7 +13,7 @@ session:
 
 di:
   export:
-    parameters: no
+    parameters: yes
     tags: no
 
 
@@ -22,4 +22,5 @@ services:
   nette.latteFactory:
     setup:
       - addFilter(markdown, @App\Latte\MarkdownFilter)
-  - App\Latte\MarkdownFilter
+  markdown: App\Latte\MarkdownFilter
+  breadcrumb: App\Components\BreadCrumbControl
