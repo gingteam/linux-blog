@@ -42,12 +42,15 @@
           </ul>
         </div>
       {/if}
+      <div id="fb-root"></div>
+      <div class="fb-comments" data-href="{link this}" data-width="100%" data-numposts="5"></div>
   </div>
 </div>
 {/block}
 
 {block scripts}
   {include parent}
+  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v10.0&appId=367010470378330&autoLogAppEvents=1" nonce="CkXUDu90"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js" integrity="sha512-s+tOYYcC3Jybgr9mVsdAxsRYlGNq4mlAurOrfNuGMQ/SCofNPu92tjE7YRZCsdEtWL1yGkqk15fU/ark206YTg==" crossorigin="anonymous"></script>
   <script>hljs.highlightAll();</script>
 {/block}
