@@ -1,25 +1,34 @@
+div.console {
+  border: solid #555;
+  border-width: 30px 0 0 0;
+  border-radius: 3px 3px 0 0;
+  position: relative;
+  margin-bottom: 1rem;
+
+  &:before {
+    background: #fc2230;
+    border-radius: 50%;
+    box-shadow: 0 0 0 2px #fc2230, 1.5em 0 0 2px #fd9332, 3em 0 0 2px #7cc74c;
+    content: '';
+    display: block;
+    height: 0.5em;
+    left: 1em;
+    position: absolute;
+    top: -1.25em;
+    width: 0.5em;
+  }
+}
+
 .hljs {
   display: block;
   background: #2b2b2b;
+  border-radius: 0 0 3px 3px;
   color: #f8f8f2;
   padding-top: 1rem;
   padding-left: 1.5rem;
   padding-bottom: 1rem;
-  border-radius: 5px 5px 5px 5px;
   position: relative;
   overflow-x: auto;
-
-  &:before {
-    content: "";
-    display: block;
-    position: sticky;
-    margin-bottom: 10px;
-    border-radius: 50%;
-    background: #fc2230;
-    box-shadow: 0 0 0 2px #fc2230, 1.5em 0 0 2px #fd9332, 3em 0 0 2px #7cc74c;
-    height: 7px;
-    width: 7px;
-  }
 }
 
 .btn-copy {
@@ -42,7 +51,7 @@
   outline: none;
   padding: 6px 12px;
   position: absolute;
-  right: 5px;
+  right: -10px;
   text-align: center;
   text-decoration: none;
   touch-action: manipulation;

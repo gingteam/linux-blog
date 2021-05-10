@@ -1,34 +1,32 @@
 $(function() {
   $('pre code').before('<div class="btn-copy" title="copy to clipboard"></div>')
-  for (const button of document.querySelectorAll('.btn-copy')) {
-    button.addEventListener('click', () => {
-        try {
-            const elem = button.parentNode;
-            copyText(elem.innerText);
+    .parent().wrap('<div class="console"></div>');
 
-            button.title = 'copied!';
-            button.classList.add('btn-copy-ok');
-            setTimeout(() => {
-                button.classList.remove('btn-copy-ok');
-            }, 3000);
-        } catch (e) {
-            console.error(e);
-        }
-    });
-  }
+  $('.btn-copy').on('click', function() {
+    try {
+      copyText($(this).parent().text());
+
+      $(this).attr('title', 'copied!')
+        .addClass('btn-copy-ok');
+      setTimeout(() => {
+        $(this).removeClass('btn-copy-ok');
+      }, 3000);
+    } catch (e) {
+      console.error(e);
+    }
+  });
 
   const copyText = text => {
-    const t = document.createElement('textarea');
-    try  {
-        t.value = text;
-        document.body.appendChild(t);
-        t.select();
-        t.setSelectionRange(0, 99999); /*For mobile devices*/
-        if (!document.execCommand('copy')) {
-            throw new Error('copy command was unsuccessful');
-        }
+    const t = $('<textarea>');
+    try {
+      t.text(text);
+      $('body').append(t);
+      t.select();
+      if (!document.execCommand('copy')) {
+        throw new Error('copy command was unsuccessful');
+      }
     } finally {
-        t.parentNode.removeChild(t);
+      t.remove();
     }
   };
 })

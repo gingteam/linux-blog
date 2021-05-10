@@ -1,6 +1,6 @@
 <nav n:if="!$presenter->isLinkCurrent('Homepage:')" aria-label="breadcrumb">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="{plink Homepage:}"><i class="fas fa-home"></i> Home</a></li>
+    <li class="breadcrumb-item"><a href="{plink Homepage:}">Home</a></li>
     {foreach $links as $link}
       <li class="breadcrumb-item">
         <a href="{$link->url}">{$link->title}</a>
