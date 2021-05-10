@@ -1,5 +1,6 @@
 $(function() {
-  $('pre code').before('<div class="btn-copy" title="copy to clipboard"></div>')
+  $('pre code').addClass('notranslate')
+    .before('<div class="btn-copy" title="copy to clipboard"></div>')
     .parent().wrap('<div class="console"></div>');
 
   $('.btn-copy').on('click', function() {
