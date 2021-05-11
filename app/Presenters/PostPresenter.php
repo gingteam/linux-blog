@@ -7,6 +7,7 @@ namespace App\Presenters;
 use Contributte\FormsBootstrap\BootstrapForm;
 use Contributte\FormsBootstrap\Enums\RenderMode;
 use Nette\Application\UI\Form;
+use Nette\Http\IResponse;
 use Nette\Utils\Strings;
 
 class PostPresenter extends BasePresenter
@@ -15,11 +16,16 @@ class PostPresenter extends BasePresenter
     {
         parent::startup();
 
-        if (
-            'show' != $this->getAction()
-            && !$this->getUser()->isLoggedIn()
+        if (!$this->getUser()
+            ->isAllowed(
+                $this->getName(),
+                $this->getAction()
+            )
         ) {
-            $this->redirect('Sign:in');
+            $this->error(
+                'You do not have permission to access this page',
+                IResponse::S403_FORBIDDEN
+            );
         }
     }
 

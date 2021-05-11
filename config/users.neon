@@ -1,4 +1,5 @@
 security:
   users:
-    admin: demo
-    gingdev: thanh
+    admin:
+      password: demo
+      roles: [admin]

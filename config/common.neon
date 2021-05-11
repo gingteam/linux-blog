@@ -19,6 +19,7 @@ di:
 
 services:
   - App\Router\RouterFactory::createRouter
+  - App\Security\PermissionFactory::create()
   nette.latteFactory:
     setup:
       - addFilter(markdown, @App\Latte\MarkdownFilter)
