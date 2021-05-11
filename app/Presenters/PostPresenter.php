@@ -7,28 +7,10 @@ namespace App\Presenters;
 use Contributte\FormsBootstrap\BootstrapForm;
 use Contributte\FormsBootstrap\Enums\RenderMode;
 use Nette\Application\UI\Form;
-use Nette\Http\IResponse;
 use Nette\Utils\Strings;
 
-class PostPresenter extends BasePresenter
+class PostPresenter extends SecuredPresenter
 {
-    protected function startup()
-    {
-        parent::startup();
-
-        if (!$this->getUser()
-            ->isAllowed(
-                $this->getName(),
-                $this->getAction()
-            )
-        ) {
-            $this->error(
-                'You do not have permission to access this page',
-                IResponse::S403_FORBIDDEN
-            );
-        }
-    }
-
     protected function getPost(int $id)
     {
         $post = $this->database->table('posts')->get($id);
