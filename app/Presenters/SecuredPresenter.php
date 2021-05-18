@@ -8,10 +8,8 @@ use Nette\Http\IResponse;
 
 class SecuredPresenter extends BasePresenter
 {
-    protected function startup()
+    public function checkRequirements($element): void
     {
-        parent::startup();
-
         if (!$this->getUser()
             ->isAllowed(
                 $this->getName(),
@@ -23,5 +21,7 @@ class SecuredPresenter extends BasePresenter
                 IResponse::S403_FORBIDDEN
             );
         }
+
+        parent::checkRequirements($element);
     }
 }
