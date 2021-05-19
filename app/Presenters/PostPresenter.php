@@ -14,7 +14,7 @@ class PostPresenter extends SecuredPresenter
     protected function getPost(int $id)
     {
         $post = $this->database->table('posts')->get($id);
-        if (!$post) {
+        if ($post === null) {
             $this->error('Post not found');
         }
 
@@ -81,7 +81,9 @@ class PostPresenter extends SecuredPresenter
         $form->addProtection();
 
         $form->addSubmit('send', 'Save and publish');
-        $form->onSuccess[] = [$this, 'postFormSucceeded'];
+        $form->onSuccess[] = function (\Nette\Application\UI\Form $form, array $values) {
+            return $this->postFormSucceeded($form, $values);
+        };
 
         return $form;
     }

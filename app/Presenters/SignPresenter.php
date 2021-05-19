@@ -21,7 +21,9 @@ class SignPresenter extends BasePresenter
         $form->addSubmit('send', 'Sign in');
         $form->addProtection();
 
-        $form->onSuccess[] = [$this, 'signInFormSucceeded'];
+        $form->onSuccess[] = function (\Nette\Application\UI\Form $form, \stdClass $values): void {
+            $this->signInFormSucceeded($form, $values);
+        };
 
         return $form;
     }

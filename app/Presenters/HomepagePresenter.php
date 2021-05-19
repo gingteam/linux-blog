@@ -11,7 +11,7 @@ class HomepagePresenter extends BasePresenter
     public function renderList(int $page = 1, string $search = '', $tag = 0)
     {
         $posts = $this->database->table('posts');
-        if ($search) {
+        if ($search !== '') {
             $posts->where(($tag ? 'tags' : 'title').' LIKE ?', '%'.$search.'%');
         }
 
