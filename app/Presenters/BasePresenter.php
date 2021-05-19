@@ -12,18 +12,16 @@ class BasePresenter extends Nette\Application\UI\Presenter
 {
     protected $title = 'Linux Blog';
 
-    /** @var Explorer */
-    protected $database;
+    /** @var Explorer @inject */
+    public $database;
+
+    /** @var BreadCrumbControl @inject */
+    public $breadcrumb;
 
     public function __construct()
     {
         parent::__construct();
         $this->absoluteUrls = true;
-    }
-
-    public function injectDatabase(Explorer $database)
-    {
-        $this->database = $database;
     }
 
     protected function afterRender()
@@ -34,8 +32,6 @@ class BasePresenter extends Nette\Application\UI\Presenter
 
     protected function createComponentBreadCrumb()
     {
-        $breadcrumb = new BreadCrumbControl();
-
-        return $breadcrumb;
+        return $this->breadcrumb;
     }
 }
